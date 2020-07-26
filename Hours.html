@@ -1,0 +1,63 @@
+<html>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    function addDay() {
+        var id = document.getElementById("id").value
+        var day = document.getElementById("day").value
+        var enter = document.getElementById("enter").value
+        var leave = document.getElementById("leave").value
+        $.post("http://localhost:3000/empHours/addday",
+            {
+                id: id,
+                day: day,
+                enter: enter,
+                leave: leave
+
+            },
+            function (data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+
+    }
+
+    function getDetails() {
+        var id = document.getElementById("getid").value
+        console.log("id is:" + id)
+        window.location = 'http://localhost:3000/empHours/getDetails/' + id;
+    }
+</script>
+<style>
+    div{
+        margin: 20px;
+    }
+    h4 {
+        color: cornflowerblue;
+    }
+    h2{
+        color: dimgray;
+    }
+</style>
+
+<body>
+    <div style="margin-left:15%;margin-right: 15%;">
+        <div>
+
+
+            <h1 style="text-align: center;">Employee attendance hours</h1>
+            <h2>Select the needed action:</h2>
+            <h4>Add day</h4>
+            id:<input type="text" id="id"><br>
+            date:<input type="text" id="day"><br>
+            entrance time:<input type="text" id="enter"><br>
+            leaving time:<input type="text" id="leave"><br>
+            <input type="button" value="Add" onclick="addDay()" />
+        </div>
+
+        <div>
+            <h4>Attendance hours:</h4>
+            id:<input type="text" id="getid">
+            <input type="button" value="See Details" onclick="getDetails()" />
+        </div>
+    </div>
+</body>

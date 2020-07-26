@@ -1,0 +1,108 @@
+<html>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    function getEmployees() {
+        window.location = 'http://localhost:3000/employee/getEmployees';
+    }
+    function getemployee() {
+        var id = document.getElementById("userInput").value
+        console.log("hhhh:"+id)
+        window.location = 'http://localhost:3000/employee/getEmployee/' + id;
+    }
+
+    function deleteEmployee() {
+        var id = document.getElementById("userId").value
+        console.log(id)
+        window.location = 'http://localhost:3000/employee/deleteEmployee/' + id;
+    }
+    function addnewemployee() {
+        var id = document.getElementById("id").value
+        var firstName = document.getElementById("name").value
+        var lastName = document.getElementById("last").value
+        var adress = document.getElementById("adress").value
+        var phone = document.getElementById("phone").value
+        var email = document.getElementById("email").value
+        $.post("http://localhost:3000/employee/addemployee",
+            {
+                id: id,
+                firstName: firstName,
+                lastName: lastName,
+                adress: adress,
+                phone: phone,
+                email: email
+            },
+            function (data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+    }
+
+
+</script>
+<style>
+
+    div{
+        margin: 20px;
+    }
+    h4 {
+        color: limegreen;
+    }
+    h2{
+        color: dimgray;
+    }
+
+</style>
+
+
+<body>
+    <div style="margin-left:15%;margin-right: 15%;" >
+
+   <h1 style="text-align: center;">Employee attendance hours</h1>
+    <h2>Select the needed action:</h2>
+    <div>
+        <h4>get the employees details</h4>
+        <input type="button" value="get details" onclick="getEmployees()" />
+    </div>
+
+    <div>
+        <h4>enter employee id to search:</h4>
+        <input type="text" id="userInput">
+        <input type="button" value="search" onclick="getemployee()" />
+    </div>
+    <div>
+        <form action="/addEmployee" method="post">
+        <h4>Add new employee:</h4>
+        <label>Id
+            <input type="text"name="id" placeholder="enter employee id " id="id">
+        </label><br>
+        <label>firstName
+            <input type="text"name="name" placeholder="enter employee first name " id="name">
+        </label><br>
+        <label> lastName
+            <input type="text"name="lastName" placeholder="enter employee last name" id="last">
+        </label><br>
+        <label>adress
+            <input type="text"name="adress" placeholder="enter employee adress " id="adress">
+        </label><br>
+        <label>phone
+            <input type="text" name="phone"placeholder="enter employee phone" id="phone">
+        </label><br>
+        <label>email
+            <input type="text"name="email" placeholder="enter employee email" id="email">
+        </label><br>
+        <input type="button" value="add new employee" onclick="addnewemployee()" />
+    </form>
+    </div>
+    <br>
+    <div>
+        <h4>enter employee id to delete:</h4>
+        <input type="text" id="userId">
+        <input type="button" value="delete" onclick="deleteEmployee()" />
+    </div>
+
+
+    </div>
+ 
+</body>
+
+</html>

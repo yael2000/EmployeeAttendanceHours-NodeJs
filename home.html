@@ -1,0 +1,20 @@
+<script>
+function getEmployeesDEtails() {
+    window.location = 'http://localhost:3000/employee/';
+}
+function getEmployeesHours() {
+    window.location = 'http://localhost:3000/empHours/';
+}
+</script>
+<body style="text-align: center;">
+    <h1>please select:</h1>
+    <div style="background-color: rgb(83, 255, 189);" >
+        <h2>to get the employees details:</h2>
+        <input type="button" value="employee" onclick="getEmployeesDEtails()" />
+    </div>
+
+    <div style="background-color: rgb(132, 253, 253);" >
+        <h2>to get employees hours:</h2>
+        <input type="button" value="hours" onclick="getEmployeesHours()" />
+    </div>
+</body>

@@ -1,0 +1,20 @@
+{
+  "name": "nodeJS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dugma.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.9",
+    "update-json-file": "^1.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
